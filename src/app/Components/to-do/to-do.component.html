@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center mt-4">TODO</h1>
+  </div>
+
+  <div class="row d-flex justify-content-center mt-5">
+    <input
+      class="col-6 me-1"
+      type="text"
+      placeholder="Enter a new task"
+      [(ngModel)]="newTask"
+    />
+    <button class="col-2 btn btn-primary" (click)="AddTask()">Add</button>
+  </div>
+
+  <div class="row d-flex justify-content-center mt-4">
+    @if (!isTableHidden) {
+    <div class="table-wrapper col-9">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th class="col-4">Task</th>
+            <th class="col-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (task of tasks_arr; track $index) {
+          <tr>
+            <td>{{ task }}</td>
+            <td>
+              <button class="btn btn-warning me-1" (click)="EditTask($index)">
+                Edit
+              </button>
+              <button class="btn btn-danger" (click)="RemoveTask($index)">
+                Remove
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    }
+  </div>
+</div>
